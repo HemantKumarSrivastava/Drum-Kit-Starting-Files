@@ -4,11 +4,13 @@ for (let i = 0; i < numOfDrums; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function () {
     let buttonInnerHtml = this.innerHTML;
     makeSound(buttonInnerHtml);
+    buttonAnimation(buttonInnerHtml);
   });
 }
 
 document.addEventListener("keydown", function (event) {
   makeSound(event.key);
+  buttonAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -59,3 +61,13 @@ function makeSound(key) {
 
 // var houseKeeping1 = new HouseKeeping("Jhon",25,3,'"Kitchen","Living Room","Bathroom"');
 // console.log(houseKeeping1.name);
+
+function buttonAnimation(currentKey) {
+  let activeButton = document.querySelector("."+ currentKey);
+  activeButton.classList.add("pressed");
+
+  setTimeout(function(){
+    activeButton.classList.remove("pressed"), 
+    1000;
+  })
+}
