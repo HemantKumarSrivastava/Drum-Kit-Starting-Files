@@ -1,6 +1,9 @@
 let numOfDrums = document.querySelectorAll(".drum").length;
 
+//Loops for each drum button and adds a click event listener
 for (let i = 0; i < numOfDrums; i++) {
+
+  // Adding a click event listener to each drum button            
   document.querySelectorAll(".drum")[i].addEventListener("click", function () {
     let buttonInnerHtml = this.innerHTML;
     makeSound(buttonInnerHtml);
@@ -8,11 +11,14 @@ for (let i = 0; i < numOfDrums; i++) {
   });
 }
 
+// Adding a keydown event listener to the document
+// This will allow the user to play sounds using keyboard keys
 document.addEventListener("keydown", function (event) {
   makeSound(event.key);
   buttonAnimation(event.key);
 });
 
+// Function to play sound based on the key pressed or button clicked
 function makeSound(key) {
   switch (key) {
     case "w":
@@ -48,26 +54,12 @@ function makeSound(key) {
   }
 }
 
-// consturture function
-// function HouseKeeping(name,age,exp,area){
-//   this.name = name;
-//   this.age = age;
-//   this.exp = exp;
-//   this.area = area;
-//   this.clean = function(){
-//     alert("Cleaning is ongoing.....");
-//   }
-// }
-
-// var houseKeeping1 = new HouseKeeping("Jhon",25,3,'"Kitchen","Living Room","Bathroom"');
-// console.log(houseKeeping1.name);
-
+// Function to animate the button when pressed
 function buttonAnimation(currentKey) {
-  let activeButton = document.querySelector("."+ currentKey);
+  let activeButton = document.querySelector("." + currentKey);
   activeButton.classList.add("pressed");
 
-  setTimeout(function(){
-    activeButton.classList.remove("pressed"), 
-    1000;
-  })
+  setTimeout(function () {
+    activeButton.classList.remove("pressed"), 1000;
+  });
 }
